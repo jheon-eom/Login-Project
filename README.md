@@ -1,3 +1,3 @@
-# Login-Project
+# Member-Project
 
 회원가입 및 로그인&로그아웃 기능 구현 학습을 위한 리포지토리입니다.
