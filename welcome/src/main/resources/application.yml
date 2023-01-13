@@ -3,7 +3,7 @@ spring:
   output:
     ansi:
       enabled: always
-  # h2 데이터 베이스 설정
+  # H2 데이터 베이스 설정
   h2:
     console:
       enabled: true
@@ -13,3 +13,13 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
+
+  # JPA 설정
+  jpa :
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
