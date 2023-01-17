@@ -1,10 +1,8 @@
 package com.ejh.welcome.domain.member.domain;
 
 import com.ejh.welcome.global.common.BaseTimeEntity;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -50,6 +48,34 @@ public class Member extends BaseTimeEntity {
         this.name = name;
         this.birth = birth;
         this.age = addAge(birth);
+    }
+
+    public Member(String email, String password, String nickname) {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+    }
+
+    public static Member createMember(String email, String password, String nickname) {
+        return new Member(email, password, nickname);
+    }
+
+    public void update(final Member member, final PasswordEncoder encoder) {
+        changeEmail(member.getEmail());
+        changeNickName(member.getNickname());
+        changePassword(encoder.encode(member.getPassword()));
+    }
+
+    private void changeEmail(final String email) {
+        this.email = email;
+    }
+
+    private void changePassword(final String password) {
+        this.password = password;
+    }
+
+    private void changeNickName(final String nickName) {
+        this.nickname = nickName;
     }
 
     private int addAge(final LocalDate birth) {

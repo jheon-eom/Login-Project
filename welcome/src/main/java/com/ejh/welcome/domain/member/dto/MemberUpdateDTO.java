@@ -27,7 +27,7 @@ public class MemberUpdateDTO {
     private String nickname;
 
     public Member toEntity() {
-        return
+        return Member.createMember(email, password, nickname);
     }
 
 }

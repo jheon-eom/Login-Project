@@ -34,7 +34,7 @@ public class MemberApiController {
     }
 
     /**
-     * 회원정보
+     * 회원정보 조회
      */
     @GetMapping("/email")
     public ResponseEntity<MemberResponse> findMember() {
@@ -50,6 +50,15 @@ public class MemberApiController {
         log.debug("{} : 회원 수정", updateDTO.getEmail());
         memberService.updateMember(updateDTO.toEntity(), getEmail());
         return ResponseEntity.ok().build();
+    }
+
+    /**
+     * 회원 탈퇴
+     */
+    @DeleteMapping
+    public ResponseEntity<Void> delete() {
+        memberService.delete(getEmail());
+        return ResponseEntity.noContent().build();
     }
 
     private String getEmail() {
