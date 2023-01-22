@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberResponse {
 
     @Email
